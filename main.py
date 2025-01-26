@@ -12,7 +12,6 @@ def element(i, j, m1, m2):
 def write_element(filename_res, len_j, col, value):
     with open(filename_res, 'a+') as file:
         file.write(str(value))
-        print(len_j, col)
         if col == len_j - 1:
             file.write('\n')
         else:
@@ -24,7 +23,6 @@ def mul_matrix(pool, m1, m2, filename_res):
     pool = mp.Pool(processes=num_processes)
     func = partial(write_element, filename_res, len(m2[0]))
     tasks = [(i, j) for i in range(len(m1)) for j in range(len(m2[0]))]
-    print(tasks)
 
     for task in tasks:
         i, j = task
